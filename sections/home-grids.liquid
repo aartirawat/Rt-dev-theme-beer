@@ -1,0 +1,178 @@
+<div class="homeGrid" data-section="home-grids">
+  <div class="container">
+    <div class="gridRow clearfix">
+      <div class="row66">
+        <div class="gridRow clearfix">
+          <div class="row100">
+            {% if section.settings.row100 != blank %}
+              <a {% if section.settings.row100_link != blank %}href="{{ section.settings.row100_link }}"{% endif %} {% if section.settings.row100_mob != blank %} class="hideOnMob"{% endif %} >               
+                <img src="{{ section.settings.row100 | img_url: 'master' }}" alt=""  />
+              </a>
+              {% if section.settings.row100_mob != blank %}
+              <a {% if section.settings.row100_link_mob != blank %}href="{{ section.settings.row100_link_mob }}"{% endif %} class="showOnMob" >
+                <img src="{{ section.settings.row100_mob | img_url: 'master' }}" alt=""  />
+              </a>
+            {% endif %}
+            {% else %}
+            <img src="//via.placeholder.com/845x400" alt="" />
+            {% endif %}
+
+          </div>
+        </div>
+        <div class="gridRow clearfix">
+          <div class="row50">
+
+            {% if section.settings.row501 != blank %}
+              <a {% if section.settings.row501_link != blank %}href="{{ section.settings.row501_link }}"{% endif %} {% if section.settings.row501_mob != blank %} class="hideOnMob"{% endif %} >               
+                <img src="{{ section.settings.row501 | img_url: 'master' }}" alt=""  />
+              </a>
+              {% if section.settings.row501_mob != blank %}
+              <a {% if section.settings.row501_link_mob != blank %}href="{{ section.settings.row501_link_mob }}"{% endif %} class="showOnMob" >               
+                <img src="{{ section.settings.row501_mob | img_url: 'master' }}" alt=""  />
+              </a>
+              {% endif %}
+            {% else %}
+            <img src="//via.placeholder.com/415x260" alt="" />
+            {% endif %}
+
+          </div>
+          <div class="row50">
+            {% if section.settings.row502 != blank %}
+              <a {% if section.settings.row502_link != blank %}href="{{ section.settings.row502_link }}"{% endif %} {% if section.settings.row502_mob != blank %} class="hideOnMob"{% endif %} >               
+                <img src="{{ section.settings.row502 | img_url: 'master' }}" alt=""  />
+              </a>
+              {% if section.settings.row502_mob != blank %}
+              <a {% if section.settings.row502_link_mob != blank %}href="{{ section.settings.row502_link_mob }}"{% endif %}  class="showOnMob" >               
+                <img src="{{ section.settings.row502_mob | img_url: 'master' }}" alt="" />
+              </a>
+              {% endif %}
+            {% else %}
+            <img src="//via.placeholder.com/415x260" alt="" />
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="row33">
+        <a {% if section.settings.row33_link != blank %}href="{{ section.settings.row33_link }}"{% endif %} >               
+          {% if section.settings.row33 != blank %}
+          <img src="{{ section.settings.row33 | img_url: 'master' }}" alt="" />
+          {% else %}
+          <img src="//via.placeholder.com/415x682" alt="" />
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Home Grid",
+    "settings": [
+	  {
+		"type": "header",
+		"content": "left row top"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "row100",
+		"label": "left row top",
+		"info": "use image 845x400"
+	  },
+	  {
+		"type": "url",
+		"id": "row100_link",
+		"label": "left row top link"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "row100_mob",
+		"label": "left row top MOBILE",
+		"info": "use imaeg 840x500"
+	  },
+	  {
+		"type": "url",
+		"id": "row100_link_mob",
+		"label": "left row top link MOBILE"
+	  },
+	  {
+		"type": "header",
+		"content": "left bottom 1"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "row501",
+		"label": "left row bottom 1",
+		"info": "use image 415x260"
+	  },
+	  {
+		"type": "url",
+		"id": "row501_link",
+		"label": "left row bottom 1 link"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "row501_mob",
+		"label": "left row bottom 1 MOBILE",
+		"info": "use same size as right image"
+	  },
+	  {
+		"type": "url",
+		"id": "row501_link_mob",
+		"label": "left row bottom 1 link MOBILE"
+	  },
+	  {
+		"type": "header",
+		"content": "left bottom 2"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "row502",
+		"label": "left row bottom 2",
+		"info": "use image 415x260"
+	  },
+	  {
+		"type": "url",
+		"id": "row502_link",
+		"label": "left row bottom 2 link"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "row502_mob",
+		"label": "left row bottom 2 MOBILE",
+		"info": "use same size as left image"
+	  },
+	  {
+		"type": "url",
+		"id": "row502_link_mob",
+		"label": "left row bottom 2 link MOBILE"
+	  },
+	  {
+		"type": "header",
+		"content": "Right row"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "row33",
+		"label": "right row",
+		"info": "use image 415x682"
+	  },
+	  {
+		"type": "url",
+		"id": "row33_link",
+		"label": "right row link"
+	  }
+	],
+	"presets": [
+      {
+        "name": "Home Grids",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

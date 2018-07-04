@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="employment-tab__header text-center">
+    <h2 class="section-subtitle">{{section.settings.title}}</h2>
+    {{section.settings.text}}
+  </div>
+  {% for block in section.blocks %}
+  <div class="employment-tab__wrapper text-center">
+    {%if block.settings.title != blank %}
+    <h2 class="title">{{block.settings.title}}</h2>
+    {%endif%}
+    {%if block.settings.text != blank %}
+    <div class="employment-tab__des">
+      {{block.settings.text}}
+    </div>
+    {%endif%}
+    {%if block.settings.btn_title != blank%}
+    <a class="btn" href="{{block.settings.url}}">{{block.settings.btn_title}}</a>
+    {%endif%}
+  </div>
+  {% endfor %}
+</div>
+{% schema %}
+  {
+    "name": "Page Employment tab",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Section Title"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+	],
+    "blocks":[
+          {
+            "type": "icon",
+            "name": "Column with image",
+            "settings": [
+              {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+              },
+              {
+                "type": "richtext",
+                "id": "text",
+                "label": "Text"
+              },
+              {
+                "type": "text",
+                "id": "btn_title",
+                "label": "Btn Title"
+              },
+              {
+                "type": "url",
+                "id": "url",
+                "label": "Btn URL"
+              }
+          
+            ]
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

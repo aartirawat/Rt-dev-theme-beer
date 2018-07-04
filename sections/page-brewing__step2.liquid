@@ -1,0 +1,103 @@
+<section id="step-2" class="page-brewing__step">
+  <div class="brewing-step" style="background-image:url({{section.settings.img_step | img_url:"large"}})"></div>
+  <div class="container">
+    <div class="brewing-step__wrapper text-center">
+      {%if section.settings.img_banner != blank %}
+      {{section.settings.img_banner | img_url: "original" | img_tag}}
+      {%endif%}
+      {%if section.settings.title != blank %}
+      <h2>{{section.settings.title}}</h2>
+      {%endif%}
+      {%if section.settings.subtitle != blank %}
+      <p>{{section.settings.subtitle}}</p>
+      {%endif%}
+      {%if section.settings.text != blank %}
+      <div class="brewing-step__description">
+        {{section.settings.text}}
+      </div>
+      {%endif%}
+    </div>
+  </div>
+  <div class="brewing-step__accordion">
+    <div class="container">
+    {% for block in section.blocks %}
+    {% if block.type == 'block_step' %}
+    <div class="brewing-step__item accordion" data-accordion>
+      
+      <div data-control id="{{ block.settings.title | handleize }}">
+        <div class="tab-icon" style="background-image:url({{block.settings.icon | img_url: "original"}})"></div>
+        {% if block.settings.title != blank %}
+        <h2 class="question">{{ block.settings.title | escape }}</h2>
+        {% endif %}
+      </div>
+      <div data-content>
+        <div class="answer">{{ block.settings.text }}</div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Page Brewing Step 2",
+    "settings": [
+          {
+            "type": "image_picker",
+            "id": "img_step",
+            "label": "Step"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_banner",
+            "label": "Featured Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Sub Title"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          }
+	],
+    "blocks":[
+          {
+            "type": "block_step",
+            "name": "Step",
+            "settings": [
+              {
+                "type": "image_picker",
+                "id": "icon",
+                "label": "Icon"
+              },
+              {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+              },
+              {
+                "type": "textarea",
+                "id": "text",
+                "label": "Text Column"
+              }
+            ]
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

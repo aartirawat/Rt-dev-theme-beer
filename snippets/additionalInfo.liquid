@@ -1,0 +1,285 @@
+<h2>Additional information</h2>
+{% assign additional_info = false %}
+<table width="100%">
+  <tbody>
+    {% if product.metafields["global"]["support_documents"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Support Documents</td>
+      <td><a href="{{ product.metafields["global"]["support_documents"] }}" target="_blank" >
+        <img alt="" src="{{ 'pdf.svg' | file_url }}" style="float: none;" /> File </a></td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["support_documents_2"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Support Documents - Instructions</td>
+      <td><a href="{{ product.metafields["global"]["support_documents_2"] }}" target="_blank">
+        <img alt="" src="{{ 'pdf.svg' | file_url }}" style="float: none;" /> File</a></td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["variant_sku"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>SKU</td>
+      <td>{{ product.metafields["global"]["variant_sku"] }}</td>
+    </tr>
+    {% endif %}     
+    {% if product.metafields["global"]["beer_color"] and product.metafields["global"]["beer_color"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Beer Color</td>
+      <td>{{ product.metafields["global"]["beer_color"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["original_gravity"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Original Gravity</td>
+      <td>{{ product.metafields["global"]["original_gravity"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["total_time_to_make"] and product.metafields["global"]["total_time_to_make"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Total Time to Make</td>
+      <td>{{ product.metafields["global"]["total_time_to_make"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["regional_style_beer"] and product.metafields["global"]["regional_style_beer"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Regional Style</td>
+      <td>{{ product.metafields["global"]["regional_style_beer"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["alcohol_content"] and product.metafields["global"]["alcohol_content"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Alcohol Content</td>
+      <td>{{ product.metafields["global"]["alcohol_content"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["beer_kit_yield"] and product.metafields["global"]["beer_kit_yield"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Yield</td>
+      <td>{{ product.metafields["global"]["beer_kit_yield"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["beer_style"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Beer Style</td>
+      <td>{{ product.metafields["global"]["beer_style"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["fermentation_type"] and product.metafields["global"]["fermentation_type"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Fermentation Type</td>
+      <td>{{ product.metafields["global"]["fermentation_type"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["beer_recipe_kit_instructions"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Beer Recipe Kit Instructions</td>
+      <td><a href="{{ product.metafields["global"]["beer_recipe_kit_instructions"] }}" target="_blank">
+        <img alt="" src="{{ 'pdf.svg' | file_url }}" style="float: none;" /> File</a></td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["organic"] == true %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Organic</td>
+      <td>{{ product.metafields["global"]["organic"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["diastatic_power"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Diastatic Power</td>
+      <td>{{ product.metafields["global"]["diastatic_power"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["extract_percentage"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Extract Percentage</td>
+      <td>{{ product.metafields["global"]["extract_percentage"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["lovibond"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Lovibond</td>
+      <td>{{ product.metafields["global"]["lovibond"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["moisture_percentage"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Moisture Percentage</td>
+      <td>{{ product.metafields["global"]["moisture_percentage"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["soluble_total_protein"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Soluble Total Protien</td>
+      <td>{{ product.metafields["global"]["soluble_total_protein"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["grain_usage"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Grain Usage</td>
+      <td>{{ product.metafields["global"]["grain_usage"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["grain_type"] and product.metafields["global"]["grain_type"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Grain Type</td>
+      <td>{{ product.metafields["global"]["grain_type"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["malt_color"] and product.metafields["global"]["malt_color"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Malt Color</td>
+      <td>{{ product.metafields["global"]["malt_color"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["yeast_disclaimer"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Yeast Disclaimer</td>
+      <td>{{ product.metafields["global"]["yeast_disclaimer"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["yeast_style"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Yeast Style</td>
+      <td>{{ product.metafields["global"]["yeast_style"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["yeast_format"] and product.metafields["global"]["yeast_format"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Yeast Format</td>
+      <td>{{ product.metafields["global"]["yeast_format"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["yeast_flocculation"] and product.metafields["global"]["yeast_flocculation"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Flocculation</td>
+      <td>{{ product.metafields["global"]["yeast_flocculation"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["min_attenuation"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Min Attenuation</td>
+      <td>{{ product.metafields["global"]["min_attenuation"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["max_attenuation"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Max Attenuation</td>
+      <td>{{ product.metafields["global"]["max_attenuation"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["min_fermenting_temp"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Min Fermenting Temp</td>
+      <td>{{ product.metafields["global"]["min_fermenting_temp"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["max_fermenting_temp"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Max Fermenting Temp</td>
+      <td>{{ product.metafields["global"]["max_fermenting_temp"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["hops_format"] and product.metafields["global"]["hops_format"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Hops Format</td>
+      <td>{{ product.metafields["global"]["hops_format"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["hops_country_of_origin"] and product.metafields["global"]["hops_country_of_origin"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Country of Origin</td>
+      <td>{{ product.metafields["global"]["hops_country_of_origin"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["hops_flavor_descriptors"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Flavor Descriptors</td>
+      <td>{{ product.metafields["global"]["hops_flavor_descriptors"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["alpha_amylase"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Alpha Amylase</td>
+      <td>{{ product.metafields["global"]["alpha_amylase"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["hops_alpha_acid"] and product.metafields["global"]["hops_alpha_acid"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Alpha Acid</td>
+      <td>{{ product.metafields["global"]["hops_alpha_acid"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["wine_color"] and product.metafields["global"]["wine_color"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Wine Color</td>
+      <td>{{ product.metafields["global"]["wine_color"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["wine_varietal"] != blank %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Wine Style</td>
+      <td>{{ product.metafields["global"]["wine_varietal"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["wine_regional_style"] and product.metafields["global"]["wine_regional_style"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Wine Region</td>
+      <td>{{ product.metafields["global"]["wine_regional_style"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["includes_grape_skins"] and product.metafields["global"]["includes_grape_skins"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Includes Grape Skins</td>
+      <td>{{ product.metafields["global"]["includes_grape_skins"] }}</td>
+    </tr>
+    {% endif %}
+    {% if product.metafields["global"]["wine_kit_yield"] and product.metafields["global"]["wine_kit_yield"] != 'N/A' %}
+    {% assign additional_info = true %}
+    <tr>
+      <td>Yield</td>
+      <td>{{ product.metafields["global"]["wine_kit_yield"] }}</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% if additional_info == false %}
+	<p>No additional information.</p>
+{% endif %}

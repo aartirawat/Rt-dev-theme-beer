@@ -1,0 +1,120 @@
+
+<script
+              type="application/json"
+              data-section-type="dynamic-video"
+              data-section-id="{{ section.id }}"
+              data-section-data>
+        {
+          "autoplay": false
+        }
+      </script>
+
+<section class="videosliderOuter" data-section="videoslider">
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <h2 class="h1 home-section--title customTitle">
+      <span>{{ section.settings.title | escape }} </span><span class="titleImg"><span>TV</span><img src="{{'tv.svg' | file_url}}"  alt="" /></span>
+    </h2>
+    {% endif %}
+
+    <div class="videoSLider">
+      {% for block in section.blocks %}
+      <div class="col-our-prod" data-section-id="{{block.id}}">
+        <div class="dynamic-video" >
+          {% assign url = block.settings.videoUrl %}
+          {% assign overlay = null %}
+          {%
+        	include 'video',
+            cover: block.settings.image,
+            aspect_ratio: 16:9,
+            overlay: overlay,
+            url: url
+          %}
+
+        </div>
+        <div class="videoTitle">
+          {{ block.settings.videotitle }}
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+    <div class="buttonOuter text-center">
+      <a class="button-primary" target="_blank" href="{{section.settings.button_link1}}">{{section.settings.button_text1}}</a>
+      <a class="button-secondary" target="_blank" href="{{section.settings.button_link2}}">{{section.settings.button_text2}}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Video Slider",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "NORTHERNBREWER"
+      },
+	  {
+		"type": "header",
+		"content": "Button 1"
+	  },
+	  {
+        "type": "text",
+        "id": "button_text1",
+        "label": "Button Text 1",
+        "default": "VIEW OUR VIDEO LIBRARY"
+      },
+	  {
+        "type": "url",
+        "id": "button_link1",
+        "label": "Button Link 1"
+      },
+	  {
+		"type": "header",
+		"content": "Button 2"
+	  },
+	  {
+        "type": "text",
+        "id": "button_text2",
+        "label": "Button Text 2",
+        "default": "FOLLOW US ON YOUTUBE"
+      },
+	  {
+        "type": "url",
+        "id": "button_link2",
+        "label": "Button Link 2"
+      }
+    ],
+    "presets": [{
+      "name": "Video Slider",
+      "category": "Image"
+    }],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Video",
+        "settings": [
+          {
+            "type": "image_picker",
+			"id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "text",
+			"id": "videotitle",
+            "label": "Video Title"
+          },
+		  {
+            "type": "video_url",
+			"id": "videoUrl",
+			"accept": ["youtube"],
+            "label": "Video URL"
+          }
+        ]
+       }
+	]
+  }
+{% endschema %}

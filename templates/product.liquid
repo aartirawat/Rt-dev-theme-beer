@@ -1,0 +1,55 @@
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+{% section 'static-product' %}
+<div class="productSticky">
+  <div class="container">
+    <div class="clearfix">
+      <div class="sticky-img">
+        <img src="{{ product.featured_image | img_url: '100x100' }}" alt="{{ product.title }}" />
+      </div><div class="sticky-content">
+        <h3>{{ product.title }}</h3>       <span class="TurnToReviewsTeaser"></span> 
+        <ul>
+          <li><a href="#product_detail">Product Details</a></li>
+          <li><a href="#q_and_a">Q&amp;A</a></li>
+          <li><a href="#client_review"><span>Client</span> Reviews (<span class="reviewCount"></span>)</a></li>
+        </ul>
+      </div><div class="sticky-btn">
+        <button
+                class="product-form--atc-button {% unless product.available %}disabled{% endunless %}"
+                type="submit"
+                {% unless product.available %}disabled{% endunless %}
+                data-product-atc>
+          {% if product.variants.size > 1 %}
+          <div class="atc-button--text selectOptions">Select Options</div>
+          {% else %}
+          <span class="atc-button--text">
+            {% if product.available %}
+            {{ 'product.buttons.add_to_cart' | t }}
+            {% else %}
+            {{ 'product.buttons.sold_out' | t }}
+            {% endif %}
+          </span>
+          {% include 'icon-cart' %}
+          <span class="atc-button--icon">
+            {%- include 'icon-spinner' -%}
+          </span>
+          {% endif %}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% comment %}
+<div class="bold-brain-widget" data-widget-id="bold-brain-widget-gIPildnlLlxcUaQU" ></div>
+<div class="bold-brain-widget" data-widget-id="bold-brain-widget-BdnaXCHzzadvCbJa" ></div>
+{% endcomment %}
+<!-- brontoBrowseObject:start -->
+<script>
+  (function(window) {
+    var BROWSE_PRODUCT = "brontoBrowseObject";
+    window[BROWSE_PRODUCT] = {
+      product: {{ product | json }}
+    };
+  })(window);
+</script>
+<!-- brontoBrowseObject:end -->
+

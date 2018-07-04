@@ -1,0 +1,64 @@
+<div class="singleImage" data-section="single-image">
+  <div class="{{ section.settings.siWidth }}">
+    <a {% if section.settings.link != blank %}href="{{ section.settings.link }}"{% endif %}>
+      <img
+           class="hideSmall"
+           src="{{ section.settings.img_desktop | img_url: 'master' | strip }}"
+           alt=""
+           >
+      <img class="showSmall"
+           src="{{ section.settings.img_mobile | img_url: 'master' | strip }}"
+           alt=""
+           >
+    </a>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Single image",
+    "settings": [
+	  {
+		"type": "image_picker",
+		"id": "img_desktop",
+		"label": "Select desktop image"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "img_mobile",
+		"label": "Select mobile image"
+	  },
+	  {
+		"type": "url",
+		"id": "link",
+		"label": "Set link"
+	  },
+	  {
+      "id": "siWidth",
+      "type": "select",
+      "label": "Image width",
+      "options": [
+          {
+            "value": "container",
+            "label": "container"
+          },
+          {
+            "value": "full",
+            "label": "full"
+          }
+		]
+	  }
+	],	
+	"presets": [
+      {
+        "name": "Single image",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,63 @@
+<div class="start_learning clearboth" data-section="start_learning"
+     style="background-image:url('{{ section.settings.mobile_image | img_url : 'master'}}')">
+  {% if section.settings.image != blank %}
+  <img src="{{ section.settings.image | img_url : 'master'}}" alt />
+  {% endif %}
+  <div class="outerstartLearning" {% if section.settings.box_color != blank %} style="background-color:{{ section.settings.box_color | color_modify: 'alpha', 0.7 }}" {% endif %}>
+    {% if section.settings.title1 != blank %}
+    <span class="section-header__title first-line" {% if section.settings.text_color != blank %}
+        style="color:{{section.settings.text_color}}" {% endif %}>{{ section.settings.title1 }}
+    </span>
+    {% endif %}
+    <a class="button-primary" href="{{section.settings.button_link}}"><img src="{{'university-graduate-hat.svg' | file_url }}" alt="" /><span>{{section.settings.button_text}}</span></a>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Learning",
+    "settings": [
+	  {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Background Image on Mobile"
+      },
+      {
+        "type": "text",
+        "id": "title1",
+        "label": "Heading Line",
+        "default": "Your one-stop-resource for <br/>Homebrewing & Winemaking"
+      },
+	  {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+      },
+	  {
+        "type": "color",
+        "id": "box_color",
+        "label": "Box Background Color"
+      },
+	  {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+		"default": "START LEARNING"
+      },
+	  {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }
+    ],
+    "presets": [{
+      "name": "Learning",
+      "category": "Text"
+    }]
+  }
+{% endschema %}

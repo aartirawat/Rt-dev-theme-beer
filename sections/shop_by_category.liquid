@@ -1,0 +1,61 @@
+<div class="shopbycatetodt clearboth" data-section="shop_by_category">
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <h2 class="h1 customTitle">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="categoryOuter">
+      {% for block in section.blocks %}
+      <div class="col-our-prod">
+        <div class="col-our-prod-inner">
+          <a href="{{ block.settings.link }}">
+            <img src="{{ block.settings.image | img_url : 'master'}}" alt="" />
+          </a>
+          <p><a href="{{ block.settings.link }}">{{ block.settings.title }}</a></p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Shop By Category",
+    "max_blocks": 18,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "SHOP BY CATEGORY"
+      }
+    ],
+    "presets": [{
+      "name": "Shop By Category",
+      "category": "Collection"
+    }],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Category",
+        "settings": [
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          },
+		  {
+            "id": "title",
+            "type": "text",
+            "label": "Title"
+          },
+		  {
+            "id": "link",
+            "type": "url",
+            "label": "Link"
+          }
+        ]
+       }
+	]
+  }
+{% endschema %}

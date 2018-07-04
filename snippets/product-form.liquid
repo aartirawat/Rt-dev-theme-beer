@@ -1,0 +1,58 @@
+{% comment %}
+  Product form
+
+  @param product
+
+  @param selected_variant
+{% endcomment %}
+
+<form method="post" action="/cart/add" data-product-form>
+  {% if product.has_only_default_variant %}
+    <input
+      name="id"
+      value="{{ product.variants[0].id }}"
+      type="hidden">
+  {% else %}
+    {%
+      include 'product-options',
+      product: product,
+      selected_variant: selected_variant,
+      style: settings.product_option_style
+    %}
+  {% endif %}
+
+  <div class="product-form--atc">
+    <div class="qtyAdjust" >
+      <div class="qtyWrap">
+        <label>{{ 'general.general.quantity' | t }}</label>
+        <input type="text" value="1" name="quantity" />
+      </div>
+      <span class="adjust plus">+</span>
+      <span class="adjust minus">-</span>
+    </div>
+
+    <button
+      class="product-form--atc-button {% unless selected_variant.available %}disabled{% endunless %}"
+      type="submit"
+      {% unless selected_variant.available %}disabled{% endunless %}
+      data-product-atc>
+      <span class="atc-button--text">
+        {% if selected_variant.available %}
+          {{ 'product.buttons.add_to_cart' | t }}
+        {% else %}
+          {{ 'product.buttons.sold_out' | t }}
+        {% endif %}
+      </span>
+      {% include 'icon-cart' %}
+      <span class="atc-button--icon">
+        {%- include 'icon-spinner' -%}
+      </span>
+    </button>
+  </div>
+</form>
+
+{%
+  include 'estimated-arrival',
+  variant: product.selected_or_first_available_variant,
+  tags: product.tags
+%}

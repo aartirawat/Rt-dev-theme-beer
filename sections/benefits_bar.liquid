@@ -1,0 +1,82 @@
+{% if section.settings.bnefitsenable %}
+<script
+    type="application/json"
+    data-section-type="benefits_bar"
+    data-section-id="{{ section.id }}"
+    data-section-data
+>
+  {
+    "enable_autoplay": {{ section.settings.enable_autoplay | json }},
+  "autoplay_duration": {{ section.settings.autoplay_duration | json }}
+  }
+</script>
+
+<div class="benefits_bar" data-section="benefits_bar">
+  <div class="container">
+    <div class="clearfixs">
+      {% for block in section.blocks %}
+      <div class="benefits_slider outerSlid">
+        <div>
+          <h3>
+            <span>{{block.settings.title}}</span>
+            {% if block.settings.svgicon != blank %}
+            {{block.settings.svgicon}}
+            {% else %}
+            {% if block.settings.image != blank %}
+            <img scr="{{ block.settings.image | img_url : 'master'}}" alt="" class="mainTitleImg" />
+            {% endif %}
+            {% endif %}
+          </h3>
+          <h4>{{block.settings.sub_text}}</h4>
+        </div>
+      </div> 
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Bnefits Bar",
+    "max_blocks": 3,
+    "settings": [
+		{
+          "type": "checkbox",
+		  "id": "bnefitsenable",
+          "label": "Enable Bnefits?"
+        }
+    ],
+    "presets": [{
+      "name": "Bnefits Bar",
+      "category": "Text"
+    }],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Bnefits",
+        "settings": [
+          {
+            "type": "text",
+			"id": "title",
+            "label": "Title"
+          },
+		  {
+            "type": "image_picker",
+			"id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "textarea",
+			"id": "svgicon",
+            "label": "SVG Icon"
+          },
+	  	  {
+            "type": "text",
+			"id": "sub_text",
+            "label": "Sub Title"
+          }
+        ]
+       }
+	]
+  }
+{% endschema %}

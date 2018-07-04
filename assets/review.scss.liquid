@@ -1,0 +1,645 @@
+$link_color: #CD0E2C;
+#TurnToContent *, #TurnToContent .TT3SearchTermMiqa, #TTtraWindow .TT3SearchTermMiqa,
+#TurnToContent, #TurnToReviewsContent, #TTtraWindow {
+  font-family: 'Lato';
+}
+#TurnToContent a, #TTtraWindow a, #TurnToReviewsContent a,
+#TurnToContent .TT3ansArea .TT3linkLine a, #TTtraWindow .TT3ansArea .TT3linkLine a,
+#TurnToContent .TT3rplyCntr .TT3linkLine a, #TTtraWindow .TT3rplyCntr .TT3linkLine a,
+#TurnToContent .TT3linkLine a, #TTtraWindow .TT3linkLine a, .TT3qText, #TTexUgcL span, .TT3aText, .TT3timeStamp,
+.TTreviewTitle, .TTreviewBody, .TT4askQ {
+  color: #222;
+}
+.TT4instAnswNext {
+  background-image: url({{ 'tra-boxed-sprites-new-2.png' | file_url }});
+}
+.TTrating-0-0, .TTrating-0-5, .TTrating-1-0, .TTrating-1-5, .TTrating-2-0, .TTrating-2-5, .TTrating-3-0, .TTrating-3-5, .TTrating-4-0,
+.TTrating-4-5, .TTrating-5-0 {
+  background-position:0 0;
+  background-size: 100% auto;
+  margin-top: 3px !important;
+}
+.TTrating-0-0 {
+  background-image:url( {{'0_stars.svg' | file_url }});
+}
+.TTrating-0-5 {
+  background-image:url( {{'0.5_stars.svg' | file_url }});
+}
+.TTrating-1-0 {
+  background-image:url( {{'1_stars.svg' | file_url }});
+}
+.TTrating-1-5 {
+  background-image:url( {{'1.5_stars.svg' | file_url }});
+}
+.TTrating-2-0 {
+  background-image:url( {{'2_stars.svg' | file_url }});
+}
+.TTrating-2-5 {
+  background-image:url( {{'2.5_stars.svg' | file_url }});
+}
+.TTrating-3-0 {
+  background-image:url( {{'3_stars.svg' | file_url }});
+}
+.TTrating-3-5 {
+  background-image:url( {{'3.5_stars.svg' | file_url }});
+}
+.TTrating-4-0 {
+  background-image:url( {{'4_stars.svg' | file_url }});
+}
+.TTrating-4-5 {
+  background-image:url( {{'4.5_stars.svg' | file_url }});
+}
+.TTrating-5-0 {
+  background-image:url( {{'5_stars.svg' | file_url }});
+}
+
+.TurnToReviewsTeaser .TTratingBox {
+  display: inline-block;
+  vertical-align: middle;
+}
+#TT3RightLinks {
+  margin-top: -58px;
+  position: relative;
+  z-index: 2;
+  a {
+    color: $link_color;
+    font-size: 14px;
+    text-decoration: underline;
+    padding: 0 5px;
+  }
+}
+.TT4startTyping {
+  display: none !important;
+}
+#TT2questionSection, #TTbrowseQAWrapper .TT8 {
+  padding: 0;
+}
+#TTexUgcL span {
+  line-height: 40px;
+}
+.TT4AskBkgAndBorder.TT4 {
+  background: none;
+  border: none;
+  padding: 0;
+}
+#TT4questionTextWrap {
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,0.03);
+  -webkit-box-shadow: 0 2px 1px 0 rgba(0,0,0,0.03);
+}
+#TTaskArea .TT4chatIcon {
+  background: url({{ '001-shapes.svg'| file_url }});
+  height: 16px;
+  width: 16px;
+  background-size: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  opacity: 0.4;
+}
+#TT4closeQuestionBox {
+  right: 10px;
+  top: 12px;
+}
+#TurnToContent textarea#TT2questionText {
+  height: 36px !important;
+  padding: 9px;
+}
+.TT3itemBox {
+  border: none;
+  background: no-repeat;
+  padding: 0;
+}
+.TT3questWrp {
+  padding-bottom: 50px;
+  .TT3qText {
+    color: #333;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.TT3questCntr {
+  margin-top: 0;
+}
+.TTbestAnswer {
+  background: url({{ 'best.png'| file_url }}) no-repeat;
+  background-size: 16px;
+  display: block;
+  color: $link_color;
+  padding-left: 20px;
+  font-weight: bold;
+  line-height: 16px;
+}
+.TT3askedBy a {
+  font-size: 13px;
+}
+.TT3timeStamp {
+  font-size: 13px;
+  margin-left: 5px;
+  opacity: 0.5;
+}
+.TT3aText {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 5px 0;
+  display: block;
+}
+.TT3ansArea ul.TT3linkLine {
+  li {
+    background-position: left center;
+    background-repeat: no-repeat;
+    &:first-child {
+      padding-left: 17px;
+      background-image: url({{ 'reply.png'| file_url }});
+      background-size: 11px;      
+    }
+    &:nth-child(2) {
+      padding-left: 15px;
+      background-image: url({{ '005-close.svg'| file_url }});
+      background-size: 9px;
+    }
+    &::after {
+      content: "|";
+      padding: 0 10px;
+      font-weight: normal;
+      color: #222;
+      opacity: 0.5;
+
+    }
+    &:last-child:after {
+      content: '';
+    }
+    > span {
+      font-size: 13px;
+      color: #222;
+    }
+  }
+  a {
+    text-decoration: underline !important;
+    font-size: 13px;
+  }
+}
+
+.TT3linkLine.TT3questionLinkLine {
+  margin: 10px 0;
+  border: none;
+  li {
+    margin: 5px 10px 5px 0;
+    background: rgba(118,119,122,0.05);
+    box-shadow: 0 2px 4px 0 #EDEEF4;
+    border-radius: 3px;
+    a {
+      padding: 11px 15px;
+      display: inline-block;
+      &:hover {
+        color: #222 !important;
+        opacity: 0.5;
+      }
+    }
+    &:after {
+      display: none;
+    }
+  }
+  .TT4expand, .TT4collapse {
+    margin: 0 -6px 0 10px;
+    vertical-align: middle;
+  }
+}
+.TT4pen, .TT4thumb {
+  vertical-align: middle;
+  background-size: 14px; 
+  background-position: center;
+}
+.TT4pen {
+  background-image: url({{ 'pen.png'| file_url }});
+}
+.TT4thumb {
+  background-image: url({{ 'thumb.png'| file_url }});
+}
+.TT4collapse, .TT4expand {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
+.TTdialog textarea, #TurnToContent textarea, #TTtraWindow textarea, #TTtraWindow #TTwriteRevForm input, #TTwriteRevForm textarea {
+  border: 1px solid #eee;
+  padding: 10px;
+}
+.TTbigSubmitBtn, .TTsearchBtn {
+  background: $link_color;
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px rgba(126, 126, 126, 0.3);
+  position: relative;
+  color: #fff;
+  &:hover {
+    background: #d22641;
+  }
+  &:after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+  }
+}
+.TTbigSubmitBtn {
+  height: 40px;
+  &:after {
+    content: 'SUBMIT';
+  }
+}
+.TTsearchBtn {
+  &:after {
+    content: 'SEARCH';
+  }
+}
+.TT2cancelBtn, .TTregCancel {
+  padding: 0 !important;
+  line-height: 40px;
+}
+.TT3searchDiv-srchTrm {
+  border: 1px solid #E4E5EC;
+}
+#TTprofileTabs li.TTactiveTab, #TTSubDialogSection .TT8 {
+  background-color: $link_color;
+}
+#TTprofileTabs, .TTrevPurchaseDate {
+  color:  $link_color;
+}
+#TT4UPtabs {
+  border-bottom: 3px solid $link_color;
+}
+#TTtraWindow #TTrespRegRight input {
+  background: #fff;
+  padding: 7px 10px;
+  height: inherit;
+}
+.TTreviewSummary {
+  max-width: 760px;
+  margin: 0 auto;
+  background: none;
+  border: none;
+}
+#TTsearchSort {
+  max-width: 760px;
+  margin: 20px auto;
+}
+#TTreviewSort {
+  height: inherit;
+  padding-top: 10px;
+}
+#TTreviewSearchLeft #TTclearRevSearch {
+  display: none;
+}
+#TTsearchTermGrp {
+  height: 41px;
+  border-radius: 3px;
+  position: relative;
+  width: 100% !important;
+}
+#TTreviewSearchTerm {
+  height: 39px;
+  padding: 10px;
+}
+#TTsearchSort .TT4searchIcon {
+  position: absolute;
+  right: 0;
+  margin: 0;
+  top: -1px;
+  height: 41px;
+  width: 40px;
+  overflow: hidden;
+  background: $link_color url({{ 'search.png' | file_url }}) no-repeat;
+  background-position: center;
+  background-size: 15px;
+}
+.TT3staffBadge {
+  background: #DAC3A0;
+  padding: 2px 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff !important;
+  font-size: 10px !important;
+}
+#TTreviewSearchLeft {
+  width: calc(100% - 251px) !important;
+  margin-left: 0;
+}
+.TTreviewSummary {
+  .TT2left {
+    float: none;
+    max-width: 410px;
+    margin: 0 auto;
+    .TTratingBox  {
+      float: left;
+      margin-right: 5px;
+    }
+  }
+  .TTreviewCount {
+    font-weight: normal;
+    margin: 0;
+    float: left;
+    line-height: 20px;
+    font-size: 15px;
+    color: #76777A;
+    text-decoration: underline;
+  }
+  .TTratingBreakdownBox {
+    float: right;
+    width: auto;
+    position: relative;
+    overflow: visible;
+    &::before {
+      position: absolute;
+      content: '';
+      left: -20px;
+      height: calc(100% + 20px);
+      top: -10px;
+      border: 1px solid #EBEBEB;
+      opacity: 0.5;
+    }
+  }
+  #TTwriteReviewBtn, .TT4writeReviewBtn {
+    float: left;
+    clear: left;
+    height: 50px;
+    width: 160px;
+    background: rgba(118,119,122,0.05) url({{ 'write.png' | file_url }}) no-repeat;
+    background-position: left 16px center;
+    background-size: 23px;
+    position: relative;
+    box-shadow: 0 2px 4px 0 #EDEEF4;
+    border-radius: 3px;
+    &::after {
+      position: absolute;
+      content: 'Write a review';
+      left: 50px;
+      font-size: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:hover {
+      background-color: rgba(103, 104, 107, 0.1);
+    }
+  }
+  .TTavgRate {
+    display: none;
+  }
+}
+.TT4breakdown {
+  background: rgba(118,119,122,0.15);
+}
+.TT4breakdownPercent {
+  background: $link_color;
+}
+#TT4breakdownLeftCol {
+  color: #76777A;
+}
+#TTreviewsWrapper {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.TTreview {
+  background: none;
+  border: none;
+  padding: 10px 0;
+  margin-bottom: 50px;
+}
+.TTreviewBody {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 0;
+}
+.TTreviewTitle {
+  font-size: 16px;
+  line-height: 2;
+  margin-top: -9px;
+  &:empty {
+    display: none;
+  }
+}
+ 
+.TTreview {
+  .TTflagReview {
+    display: none !important;
+  }
+  .TThelpful {
+    color: #76777A;
+    font-size: 13px;
+    a {
+      margin: 0 5px;
+      color: #76777A !important;
+      &:hover {
+        color: #222 !important;
+      }
+    }
+    &:after {
+      display: none;
+    }
+  }
+  div[itemprop="dateCreated"] {
+    font-size: 13px;
+    line-height: 16px;
+    color: #222;
+    opacity: 0.5;
+    margin-bottom: 10px;
+  }
+  .TTrevLinkLine {
+    text-align: right;
+  }
+}
+.TT3ShowMore {
+  background: rgba(118,119,122,0.05);
+  border: none;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 #EDEEF4;
+  border-radius: 3px;
+  a img {
+    display: none !important;
+  }
+  a span {
+    padding: 0;
+    margin: 0;
+    color: #222222;
+    font-size: 16px;
+    opacity: 0.85;
+  }
+}
+.TTratingBoxBorder {
+  border: none;
+  padding: 0;
+}
+#TT4iaResultsR {
+  max-width: 760px;
+  margin: 0 auto;
+  .TT3qText {
+    font-size: 16px;
+    line-height: 2;
+  }
+  .TT3askedBy {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+#TT4iaBlock {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.TTdialog textarea, #TurnToContent textarea, #TTtraWindow textarea, #TTtraWindow #TTwriteRevForm input, #TTwriteRevForm textarea {
+  border: 1px solid #e1e1e1;
+  background: none;
+}
+.TTui-widget-overlay {
+  opacity: 0.4;
+  filter: Alpha(Opacity = 0.4);
+  background: #000;
+}
+.columns { 
+  .column {
+    float: left;
+  }
+  .col64 {
+    width: 64%;
+    padding-right: 80px;
+  }
+  .col36 {
+    width: 36%;
+  }
+}
+.TT4chatter {
+  padding: 30px 0 0;
+  border: none;
+  font-family: 'Lato';
+}
+.TT4chatter-title {
+  font-family: 'Knockout-HTF31-JuniorMiddlewt';
+  font-size: 24px;
+}
+.TT4chatter-header {
+  box-shadow: 0 1px 0 0 rgba(118,119,122,0.1);
+  border: none;
+}
+.TT4chatter a {
+  color: #333;
+  text-decoration: underline;
+}
+.TT4chatterCol {
+  width: 100% !important;
+  float: none;
+}
+.TT4quote-body {
+  display: block;
+  font-size: 16px;
+  line-height: 26px;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+.TT4quote-source {
+  color: #222;
+  opacity: 0.5;
+  font-size: 14px;
+  line-height: 17px;
+}
+.TT4quote-author::before {
+  display: none;
+}
+.TT4chatter-count {
+  font-size: 14px;
+  font-family: 'Lato';
+  line-height: 34px;
+}
+.TT4chatter-pagination li a {
+  background: rgba(118,119,122,0.05);
+  box-shadow: 0 2px 4px 0 #EDEEF4;
+  border-radius: 3px;
+  padding: 10px 15px;
+  display: inline-block;
+  text-decoration: none;
+}
+blockquote.TT4quote {
+  padding-right: 0;
+  padding-left: 24px;
+}
+blockquote.TT4quote::before {
+  content: '';
+  height: 16px;
+  width: 16px;
+  background: url({{ '002-quote.svg' | file_url }}) no-repeat;
+  background-position: center;
+  background-size: 100%;
+  opacity: 0.4;
+}
+ 
+
+@media(max-width: 991px) {
+  .columns .col64, .columns .col36 {
+    width: 100%;
+    padding-right: 0;
+    float: none;
+  }
+  .TT4chatter {
+    padding: 0;
+  }
+}
+@media(max-width: 767px) {
+  .TT3questWrp {
+    padding-bottom: 20px;
+  }
+  .TT3linkLine.TT3questionLinkLine li {
+    margin: 5px 5px 5px 0;
+  }
+  .TT3linkLine.TT3questionLinkLine li a {
+    padding: 8px 8px;
+  }
+  .TTreviewSummary .TTratingBreakdownBox {
+    float: none;
+    overflow: hidden;
+    max-width: 220px;
+    margin: 10px auto 0;
+    &::before {
+      display: none;
+    }
+  }
+  .TTreviewSummary {
+    text-align: center;
+  }
+  #TTtraSubWindow, #TTtrasubmid {
+    max-width: 100%;
+  }
+}
+@media(max-width: 479px) {
+  #TT3RightLinks {
+    text-align: center;
+    float: none;
+  }
+  #TT3RightLinks {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  #TTreviewSearchLeft {
+    width: 100% !important;
+  }
+  .TTreviewSummary {
+    padding: 15px 0 0;
+    .TT2left .TTratingBox {
+      float: none;
+    }
+    .TT2left {
+      max-width: 100%;
+    }
+    .TTreviewCount {
+      float: none;
+      margin: 5px 0;
+    }
+  }
+  #TTwriteReviewBtn-portrait {
+    margin: 0;
+    float: none;
+  }
+}

@@ -1,0 +1,126 @@
+
+{%for block in section.blocks%}
+{% if block.type == "banner"%}
+<div class="container">
+  <div class="page-brewing__banner text-center">
+    {{ block.settings.img_banner | img_url: "original" | img_tag}}
+    <h1 class="page-brewing__banner-title">{{block.settings.title}}</h1>
+    {{block.settings.text}}
+    <div class="page-brewing__banner-step">
+      <div class="step-btn"><a href="{{block.settings.url_step1}}">{{block.settings.img_step1 | img_url: "original" | img_tag}}</a></div>
+      <div class="step-btn"><a href="{{block.settings.url_step2}}">{{block.settings.img_step2 | img_url: "original" | img_tag}}</a></div>
+      <div class="step-btn"><a href="{{block.settings.url_step3}}">{{block.settings.img_step3 | img_url: "original" | img_tag}}</a></div>
+      <div class="step-btn"><a href="{{block.settings.url_step4}}">{{block.settings.img_step4 | img_url: "original" | img_tag}}</a></div>
+    </div>
+  </div>
+</div>
+    {%endif%}
+    {%endfor%}
+<div class="sidebar-nav">
+{%for block in section.blocks%}
+{% if block.type == "sidebar"%}
+  <div class="sidebar-nav__item">
+    <a href="{{block.settings.url}}">
+      <div style="background-image:url({{block.settings.image | img_url:"original"}})"></div>
+      <span>{{block.settings.title}}</span>
+    </a>
+  </div>
+    {%endif%}
+    {%endfor%}
+</div>
+{% schema %}
+  {
+    "name": "Page Brewing",
+    "settings": [],
+	"blocks":[
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img_banner",
+            "label": "Banner Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Banner Title"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_step1",
+            "label": "Step 1"
+          },
+          {
+            "type": "url",
+            "id": "url_step1",
+            "label": "Link Step 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_step2",
+            "label": "Step 2"
+          },
+          {
+            "type": "url",
+            "id": "url_step2",
+            "label": "Link Step 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_step3",
+            "label": "Step 3"
+          },
+          {
+            "type": "url",
+            "id": "url_step3",
+            "label": "Link Step 3"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_step4",
+            "label": "Step 4"
+          },
+          {
+            "type": "url",
+            "id": "url_step4",
+            "label": "Link Step 4"
+          }
+        ]
+      },
+      {
+        "type": "sidebar",
+        "name": "SideBar Nav",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Side Title"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link Step"
+          }
+        ]
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,14 @@
+{% comment %}
+  <!--
+  Snippet to render the markup needed to display an estimated arrival time from Brewfaster.
+
+  Arguments
+  variant [Variant Object] The variant object
+  tags [String] The product tags
+
+  Returns
+  Returns no variables that are set up by the snippet to be used outside the snippet.
+  -->
+{% endcomment %}
+
+<div class="shipdate" data-estimated-arrival data-variant-sku="{{ variant.sku }}" data-variant-available="{{ variant.available }}" data-product-tags="{{ tags | join: ", " }}"></div>

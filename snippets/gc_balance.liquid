@@ -1,0 +1,32 @@
+<style>
+  .gc-balance-response {margin-bottom:20px;border:1px solid green;padding:20px;color:green;}
+  #gc-balance-error {color:red;border-color:red;}
+  #gift-card-balance-checker input {padding:16px;}
+  #gift-card-balance-checker .form-error {border:1px solid red;}
+  #gift-card-balance-checker .btn
+  {
+  padding: 10px 16px;
+    font-size: 13px;
+    min-width: 90px;
+    background-color: #a81010;
+    border-color: #a81010;
+    color: #ffffff;
+    line-height: 2.5;
+    border-radius: 3px;
+  }
+</style>
+<div id="gc-balance-success" class="gc-balance-response" style="display:none;">
+  Your current balance is $<span id="gc-balance"></span>
+</div>
+<div id="gc-balance-error" class="gc-balance-response" style="display:none;">
+  Invalid or expired gift card number.        
+</div>      
+<form id="gift-card-balance-checker" onsubmit="return gift_card_balance_check(this);">
+  <input type="text" name="gc" id="gc" placeholder="Your Gift Card #" style="width:30%;"/>
+  <input type="text" name="gc_pin" id="gc-pin" placeholder="Pin" style="width:15%;"/>
+  &nbsp;
+  &nbsp;
+  <button type="submit" class="btn">Check Balance</button>
+</form>
+
+{{'giftcard.js' | asset_url | script_tag}}

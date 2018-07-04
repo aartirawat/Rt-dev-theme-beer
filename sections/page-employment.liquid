@@ -1,0 +1,119 @@
+{%for block in section.blocks%}
+{%if block.type == "banner"%}
+<div class="page-employment__banner text-center" {%if block.settings.image != blank %}style="background-image: url({{block.settings.image | img_url: "2048x"}})"{%endif%}>
+  <div class="container">
+    <div class="page-employment__banner-wrapper {%if block.settings.image != blank %}has-bg{%endif%}">
+      {%if block.settings.title != blank %}
+      <h1 class="section-title">{{block.settings.title}}</h1> 
+      {%endif%}
+      {%if block.settings.subtitle != blank %}
+      <h2 class="section-subtitle">{{block.settings.subtitle}}</h2> 
+      {%endif%}
+      {%if block.settings.text != blank %}
+      {{block.settings.text}}
+      {%endif%}
+      {%if block.settings.btn_title != blank%}
+      <a class="btn {%if block.settings.image != blank %}btn_light{%endif%}" href="{{block.settings.url}}">{{block.settings.btn_title}}</a>
+      {%endif%}
+    </div>
+  </div>
+</div>
+{%endif%}
+{%endfor%}
+{% schema %}
+  {
+    "name": "Page Employment",
+    "settings": [
+	],
+    "blocks":[
+          {
+            "type": "banner",
+            "name": "Image with text",
+            "settings": [
+              {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image Column"
+              },
+              {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+              },
+              {
+                "type": "text",
+                "id": "subtitle",
+                "label": "Sub Title"
+              },
+              {
+                "type": "richtext",
+                "id": "text",
+                "label": "Text Column"
+              },              
+			  {
+                "type": "text",
+                "id": "btn_title",
+                "label": "Button Title"
+              },              
+			  {
+                "type": "url",
+                "id": "url",
+                "label": "Button Link"
+              }
+            ]
+      },
+          {
+            "type": "icon",
+            "name": "Feature Icon",
+            "settings": [
+              {
+                "type": "text",
+                "id": "icon1",
+                "label": "Icon 1 Title"
+              },
+              {
+                "type": "text",
+                "id": "title1",
+                "label": "Description 1"
+              },
+              {
+                "type": "text",
+                "id": "icon2",
+                "label": "Icon 2 Title"
+              },
+              {
+                "type": "text",
+                "id": "title2",
+                "label": "Description 2"
+              },
+              {
+                "type": "text",
+                "id": "icon3",
+                "label": "Icon 3 Title"
+              },
+              {
+                "type": "text",
+                "id": "title3",
+                "label": "Description 3"
+              },
+              {
+                "type": "text",
+                "id": "icon4",
+                "label": "Icon 4 Title "
+              },
+              {
+                "type": "text",
+                "id": "title4",
+                "label": "Description 4"
+              }
+            ]
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,24 @@
+<article class="site-page" data-template-page>
+  <header class="page-masthead">
+    <h1 class="page-title">
+      {{ page.title }}
+    </h1>
+  </header>
+
+  {% if page.content != blank %}
+  <div class="productgrid--outer     layout--has-sidebar  ">
+    <div class="productgrid--sidebar pageSidebar">
+      <ul class="navmenu  navmenu-depth-1  ">
+      {% for link in linklists.connect.links %}
+        <li class="navmenu-item">
+          <a href="{{ link.url }}" class="navmenu-link {% if link.active %}active{% endif %}" >{{ link.title }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+    <div class="productgrid--wrapper rte">
+       {{ page.content }}
+    </div>
+  </div>
+  {% endif %}
+</article>

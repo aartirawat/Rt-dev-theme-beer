@@ -1,0 +1,114 @@
+{% assign compare_at_price = 0 %}
+
+{% for variant in item.product.variants %}
+  {% if variant.id == item.variant.id and variant.compare_at_price > item.price %}
+    {% assign compare_at_price = variant.compare_at_price %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<article class="cart-item visibleItem"
+  data-cartitem
+  data-cartitem-key="{{item.key}}"
+  data-qty="{{ item.quantity }}"
+  data-line="{{ forloop.index }}"
+  data-cartitem-id="{{ item.key }}"
+  data-cartitem-price="{{ item.price }}">
+
+  <figure class="cart-item--image-wrapper">
+    <a href="{{ item.url }}">
+      {% if item.image %}
+      <img
+        src="{{ item.image | img_url: '100x' }}"
+        {% if image.height >= 240 %}
+          srcset="{{ image | img_url: '240x' }} 2x"
+        {% endif %}
+        alt="{{ item.title | escape }}">
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder--image' }}
+      {% endif %}
+    </a>
+  </figure>
+
+  <div class="cart-item--inner">
+
+    <div class="cart-item--content">
+      <h2 class="cart-item--content-title">
+        <a href="{{ item.url }}">
+          {{ item.product.title }}
+        </a>
+      </h2>
+
+      {% unless item.product.has_only_default_variant %}
+        {% for option in item.product.options %}
+          <div class="cart-item--content-info">
+            <span>{{ option }}</span>
+            {{ item.variant.options[forloop.index0] }}
+          </div>
+        {% endfor %}
+      {% endunless %}
+
+      {% assign propertySize = item.properties | size %}
+      {% if propertySize > 0 %}
+      <div class="itemProp">
+        {% for p in item.properties %}
+          {% assign first_character_in_key = p.first | truncate: 1, '' %}
+          {% unless p.last == blank or first_character_in_key == '_' %}
+          	<p>{% include 'icon-checked' %} {{ p.first }}: <span>{{ p.last }}</span></p>
+          {% endunless %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+
+    <div class="cart-item--info">
+
+      <div
+        class="cart-item--quantity form-fields--qty"
+        data-quantity-wrapper
+        >
+
+        <div class="qtyAdjust" >
+          <div class="qtyWrap">
+            <label>{{ 'general.general.quantity' | t }}</label>
+            <input data-line="{{ forloop.index }}" data-id="{{ item.id }}" type="text" value="{{ item.quantity }}" name="updates[]" id="updates_{{ item.key }}" data-quantity-input data-cartitem-quantity />
+          </div>
+          <span class="adjust plus bold-quantity-update">+</span>
+          <span class="adjust minus bold-quantity-update">-</span>
+        </div>
+      </div>
+
+      <div class="cart-item--remove hideVerySmall">
+        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart-item--remove-link" data-cartitem-remove >
+          <img src="{{ 'delete.png' | asset_url }}" alt="" />
+        </a>
+      </div>
+
+       <div class="cart-item--total">
+         <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart-item--remove-link showVerySmall" data-cartitem-remove >
+           <img src="{{ 'delete.png' | asset_url }}" alt="" />
+         </a>
+         <span class="totalWrap">
+           <span class="money" data-cartitem-total>
+             <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_total" style="display:none !important;"></span>{{ item.line_price | money }}
+           </span>
+
+           <div class="cart-item--content-price">
+             ({{ item.quantity }} x
+             <span class="money">
+               <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price" style="display:none !important;"></span>{{ item.price | money }}
+             </span>)
+           </div>
+         </span>
+      </div>
+
+      {%
+        include 'estimated-arrival',
+        variant: item.variant
+        tags: item.product.tags,
+      %}
+
+    </div>
+  </div>
+</article>

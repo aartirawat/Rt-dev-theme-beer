@@ -1,0 +1,61 @@
+/*!
+* jQuery Accordion 0.0.1
+* (c) 2014 Victor Fernandez <victor@vctrfrnndz.com>
+* MIT Licensed.
+*/
+
+/* Requirements */
+
+[data-accordion] [data-content] {
+  overflow: hidden;
+  max-height: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Basic Theme */
+
+[data-accordion] {
+
+}
+
+[data-control],
+[data-content] > * {
+
+  padding: 10px 0;
+}
+
+[data-content] [data-accordion] {
+  border: 0;
+  padding: 0;
+}
+
+[data-accordion] [data-control] {
+  position: relative;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+[data-accordion] > [data-control]:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  font-size: 25px;
+  font-weight: 200;
+  color: #444;
+  height: 15px;
+  width: 24px;
+  background: url({{ 'icon-down.svg' | asset_url }}) center center no-repeat;
+  background-size: 20px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
+
+[data-accordion].open > [data-control]:after {
+  background: url({{ 'icon-up.svg' | asset_url }}) center center no-repeat;
+  background-size: 20px;
+}

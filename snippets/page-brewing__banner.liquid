@@ -1,0 +1,13 @@
+<div class="container">
+<div class="page-brewing__banner text-center">
+  {{ block.settings.img_banner | img_url: "original" | img_tag}}
+  <h1 class="page-brewing__banner-title">{{block.settings.title}}</h1>
+  {{block.settings.text}}
+  <div class="page-brewing__banner-step">
+    <div class="step-btn"><a href="{{block.settings.url_step1}}">{{block.settings.img_step1 | img_url: "original" | img_tag}}</a></div>
+    <div class="step-btn"><a href="{{block.settings.url_step2}}">{{block.settings.img_step2 | img_url: "original" | img_tag}}</a></div>
+    <div class="step-btn"><a href="{{block.settings.url_step3}}">{{block.settings.img_step3 | img_url: "original" | img_tag}}</a></div>
+    <div class="step-btn"><a href="{{block.settings.url_step4}}">{{block.settings.img_step4 | img_url: "original" | img_tag}}</a></div>
+  </div>
+</div>
+</div>

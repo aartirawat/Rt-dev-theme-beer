@@ -1,0 +1,60 @@
+<div class="newSletterSection clearboth" data-section="newsletter" >
+  <div class="container">
+    <div class="outerNewsLetter">
+      {% if section.settings.title != blank %}
+      	<h2 class="h1 text-center section-header__title">{{ section.settings.title }}</h2>
+      {% endif %}
+      <div class="contentAreaNews">
+        {{ section.settings.desc }}
+      </div>
+      {% include 'newsletter' %}
+    </div>
+  </div>
+</div>
+<style>
+  .newSletterSection {
+    background-image:url({{ section.settings.image | img_url : 'master'}});
+  }
+  {% if section.settings.mobimage != blank %}
+  @media(max-width: 767px) {
+    .newSletterSection {
+      background-image:url({{ section.settings.mobimage | img_url : 'master'}});
+    }
+  }
+  {% endif %}
+</style>
+
+{% schema %}
+  {
+    "name": "NewsLetter",
+    "settings": [
+	  {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Desktop Background Image"
+      },
+	  {
+        "type": "image_picker",
+        "id": "mobimage",
+        "label": "Mobile Background Image",
+		"info": "upload image 800x wide"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Get Deals & Steals Straight to Your E-mail!"
+      },
+	  {
+        "type": "richtext",
+        "id": "desc",
+        "label": "Content",
+		"default": "<p>Sign up today to receive emails about new products and great deals for hombrewing and winemaking supplies.</p>"
+      }
+    ],
+    "presets": [{
+      "name": "NewsLetter",
+      "category": "Text"
+    }]
+  }
+{% endschema %}

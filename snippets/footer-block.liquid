@@ -1,0 +1,66 @@
+{%- capture block_class -%}
+  site-footer-block-item
+  site-footer-block-{{ block.type | replace: '_', '-' }}
+  {% if block.type == 'menu' %} {% endif %}
+{%- endcapture -%}
+
+<div class="{{ block_class | strip_newlines }}" {{ block.shopify_attributes }}>
+
+  {% if block.type == 'menu' %}
+      <h2 class="site-footer-block-title" >
+        {{ linklists[block.settings.menu].title | escape }}
+      </h2>
+
+      <div class="site-footer-block-content" >
+        {%
+          include 'navmenu',
+          menu: block.settings.menu,
+          depth: 1,
+          max_depth: 1,
+          aria_expanded: false
+        %}
+      </div>
+  {% elsif block.type == 'rich_text' or block.type == 'newsletter' %}
+    {% if block.settings.title != blank %}
+      <h2 class="site-footer-block-title">
+        {{ block.settings.title | escape }}
+      </h2>
+    {% endif %}
+
+    {% if block.settings.text != blank %}
+      <div class="site-footer-block-content rte">
+        {{ block.settings.text }}
+      </div>
+    {% endif %}
+
+    {% if block.type == 'newsletter' %}
+      {% include 'newsletter' %}
+    {% endif %}
+  {% elsif block.type == 'social_accounts' %}
+    <h2 class="site-footer-block-title">
+      {{ 'footer.general.follow_us' | t }}
+    </h2>
+
+    <div class="site-footer-block-content">
+      {% include 'social-list' %}
+    </div>
+  {% elsif block.type == 'logo' %}
+  	
+  	{% if block.settings.flogo != black %}
+  	<img src="{{ block.settings.flogo | img_url: '210x' }}" alt="" />        
+    {% endif %}
+  	
+    {% if block.settings.title != blank %}
+    <h2 class="site-footer-block-title">
+      {{ block.settings.title | escape }}
+    </h2>
+    {% endif %}
+
+    {% if block.settings.text != blank %}
+    <div class="site-footer-block-content rte">
+      {{ block.settings.text }}
+    </div>
+    {% endif %}
+  {% endif %}
+
+</div>

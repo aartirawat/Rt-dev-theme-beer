@@ -1,0 +1,30 @@
+{% assign continue_shopping_url = "/collections/all" %}
+
+{% if settings.continue_shopping_url != blank %}
+  {% assign continue_shopping_url = settings.continue_shopping_url %}
+{% endif %}
+
+<section class="fourohfour--container">
+  <header class="fourohfour-title">
+    <h1>{{ '404.general.title' | t }}</h1>
+  </header>
+
+  <div class="fourohfour--inner">
+    <p>{{ '404.general.text' | t }}</p>
+
+    {% if settings.continue_url_404 != blank %}
+      <a class="button-primary" href="{{ continue_shopping_url }}">
+        {{ '404.general.continue_shopping' | t }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+<!-- DO NOT EDIT: START -->
+<!-- BULK REDIRECT CODE: START -->
+<script type="text/javascript">
+function makeDoubleDelegate(a,b){return function(){if(a)a();if(b)b()}}window.onload=makeDoubleDelegate(window.onload,function(){window.onload=function(){var a=document.createElement("img");var b="https:"==document.location.protocol?"https://":"http://";a.src=b+"www.redirectsapp.com/tracker?r="+encodeURIComponent(document.referrer)+"&c=87N8";((document.getElementsByTagName("head")||[null])[0]||document.getElementsByTagName("script")[0].parentNode).appendChild(a)}()})
+</script>
+<!-- BULK REDIRECT CODE: END -->
+<!-- DO NOT EDIT: END -->
+

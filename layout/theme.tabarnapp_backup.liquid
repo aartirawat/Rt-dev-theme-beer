@@ -1,0 +1,371 @@
+<!doctype html>
+<!--[if IE]><html class="no-js no-touch ie9" lang="{{ shop.locale }}"><![endif]-->
+<!--[if !IE]><!--><html class="no-js no-touch" lang="{{ shop.locale }}"><!--<![endif]-->
+  <head>
+    <script src="https://cdn.optimizely.com/js/2496051029.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWQVPZK');</script>
+<!-- End Google Tag Manager -->
+
+    <title> 
+      {{- page_title -}}
+
+      {%- if current_tags -%}
+        {%- include 'advanced-tag-loop' -%}
+        {% assign title_tags = '' %}
+        {% assign meta_tags = current_tags | join: ', ' %}
+        {%- for tag in current_tags -%}
+          {% assign is_advanced_tag = false %}
+          {% assign cat = tag | split: '_' | first %}
+
+          {%- unless cat == tag -%}
+            {%- if cat_array contains cat -%}
+              {% assign is_advanced_tag = true %}
+              {% assign title_tags = title_tags | append: ', ' | append: tag | replace_first: '_', ': ' %}
+            {%- endif -%}
+          {%- endunless -%}
+
+          {%- unless is_advanced_tag -%}
+            {% assign title_tags = title_tags | append: ', ' | append: tag %}
+          {%- endunless -%}
+        {%- endfor -%}
+        {{ 'general.title.tags' | t: tags: title_tags | remove_first: ', ' }}
+      {%- endif -%}
+
+      {%- if current_page != 1 -%}
+        {{- 'general.title.page' | t: page: current_page -}}
+      {%- endif -%}
+
+      {%- unless page_title contains shop.name -%}
+        {{- 'general.title.shop' | t: shop: shop.name -}}
+      {%- endunless -%}
+    </title>
+
+    {% if page_description != blank %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% include 'favicon' %}
+
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="viewport" content="width=device-width">
+
+    {% include 'social-meta-tags' %}
+
+    {{ content_for_header }}
+    {{ 'bold-brain-widget.css' | asset_url | stylesheet_tag }}
+
+    {%- include 'bold-common' -%}
+    {%- include 'bold-product' with product, hide_action: 'header' -%}
+
+    <script>
+      document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');
+      if(window.Shopify&&window.Shopify.designMode)document.documentElement.className+=' in-theme-editor';
+      if(('ontouchstart' in window)||window.DocumentTouch&&document instanceof DocumentTouch)document.documentElement.className=document.documentElement.className.replace(/\bno-touch\b/,'has-touch');
+    </script>
+
+    {% include 'fonts' %}
+
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    <!--begin-bc-sf-filter-css-->
+    {{ 'bc-sf-filter.css' | asset_url | stylesheet_tag }}
+    <!--end-bc-sf-filter-css-->
+    {{ 'custom_master.scss.css' | asset_url | stylesheet_tag }}
+    <script type="text/javascript" src="//static.www.turnto.com/sitedata/bM99ARRH2BRlxZssite/v4_3/{{ product.variants.first.sku }}/d/itemjs"></script>
+    <script type="text/javascript">
+      var TurnToChatterSku = "{{ product.variants.first.sku }}";
+      var turnToConfig = {
+        siteKey: "HZqWc6gtg89FNzLsite", //real: "bM99ARRH2BRlxZssite", demo: HZqWc6gtg89FNzLsite
+        reviewsSetupType: "dynamicEmbed",
+        setupType: "dynamicEmbed",
+        reviewsTeaserFunc: reviewsTeaser,
+        chatter:{
+          columns: 1,
+          rowsInCollapsedView: 8,
+          rowsInExpandedView:15,
+          title:'Why I Chose This:',
+          expandText:'Read More',
+          collapsedText:'Read Less',
+          paginationPrevText:'Previous',
+          paginationNextText:'Next',
+          includeSyndicated:true,
+          sortOrder:'most recent'
+        }
+      };
+     
+      (function() {
+        var tt = document.createElement('script'); tt.type = 'text/javascript'; tt.async = true;
+        tt.src = document.location.protocol + "//static.www.turnto.com/traServer4_3/chatterjs/" + turnToConfig.siteKey + "/turnto-chatter.js";
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tt, s);
+      })();
+
+      
+      (function() {
+        var tt = document.createElement('script'); tt.type = 'text/javascript'; tt.async = true;
+        tt.src = document.location.protocol + "//static.www.turnto.com/traServer4_3/trajs/" + turnToConfig.siteKey + "/tra.js";
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tt, s);
+      })();
+ 
+
+      function reviewsTeaser() {
+        if(typeof(TurnToItemData) == 'undefined' || typeof(TurnToItemData.counts) == 'undefined') {
+          return '';
+        } else {
+          var reviewCount = TurnToItemData.counts.r;
+          var teaserContainer = TurnTojQuery(".TurnToReviewsTeaser");
+          var teaserHtml = '';
+          var rating = Math.round((TurnToItemData.counts.ar + 0.25) * 100.0) / 100.0;
+          rating = rating.toString();
+          var decimal = parseInt(rating.substring(2, 3))
+          rating = rating.substring(0, 1) + "-" + (decimal >= 5 ? '5' : '0');
+          if(reviewCount == 0) {
+            teaserHtml = '<div class="TT2left TTratingBox TTrating-0-0"></div> <a id="writeReview" href="javascript:void(0)">Write a Review</a>';
+          } else {
+            teaserHtml = '<div class="TTratingBox TTrating-' + rating + '"></div> <span class="totalRating">'+ TurnToItemData.counts.ar +'</span> <a id="readReviews" href="javascript:void(0)">' + reviewCount + ' Review' + (reviewCount == 1 ? '' : 's') + '</a>';
+          }
+          teaserContainer.html(teaserHtml);
+          TurnTojQuery('.reviewCount').text(TurnToItemData.counts.r);
+          teaserContainer.find('#readReviews').click(function(e) {
+            $("html, body").animate({ scrollTop: $('#client_review').offset().top-120 }, 1000);
+          });
+          teaserContainer.find('#writeReview').click(function(e) {
+            TurnTo.writeReview();
+          });
+        }
+      }
+    </script>
+
+
+<!-- geo-tools -->
+<script id="geo_tools_script" data-dir="https://geotools.shopify.simtechdev.com/js/addons/sd_shopify_geo_tools/customer.js" src="https://geotools.shopify.simtechdev.com/js/addons/sd_shopify_geo_tools/customer_head.js" async></script>
+<!-- /geo-tools -->
+</head>
+
+<body>
+  {{ 'review.scss.css' | asset_url | stylesheet_tag }}
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWQVPZK"  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {% section 'static-header' %}
+
+  <main class="site-main">
+    {% if template == 'index' %}
+      {% section 'static-slideshow' %}
+      {% section 'static-highlights-banners' %}
+    {% endif %}
+
+    {{ content_for_layout }}
+  </main>
+
+    {% section 'static-footer' %}
+
+    {% comment %}
+      Below are various templates used in JavaScript
+    {% endcomment %}
+    <div style="display: none;" aria-hidden="true" data-templates>
+      {% include 'message-banner' %}
+      {% include 'atc-banner' %}
+    </div>
+
+    {% comment %}
+      Modal container, used on Collections, Password, and QuickShop
+    {% endcomment %}
+    {% include 'modal' %}
+
+
+    {%- if template contains 'customer' -%}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+      {{ 'customer_area.js' | shopify_asset_url | script_tag }}
+    {%- endif -%}
+
+    <script
+      src="{{ 'empire.js' | asset_url }}"
+      data-scripts
+      data-shopify-api-url="{{ 'api.jquery.js' | shopify_asset_url }}"
+      data-shopify-currencies="//cdn.shopify.com/s/javascripts/currencies.js"
+      data-shopify-countries="/services/javascripts/countries.js"
+      data-shopify-common="{{ 'shopify_common.js' | shopify_asset_url }}"
+      data-shopify-cart="{{ 'jquery.cart.js' | asset_url }}">
+    </script>
+    
+    {% if template contains 'product' %}
+    {{ 'slick.min.js' | asset_url | script_tag }}
+    <script>
+      $(document).ready(function(){
+
+        $('.product-gallery--main').slick({
+          arrows: false,
+          fade: true,
+          asNavFor: '.product-gallery--navigation'
+        });
+        $('.product-gallery--navigation').slick({
+          vertical: true,
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          focusOnSelect: true,
+          asNavFor: '.product-gallery--main',
+          responsive: [
+            {
+              breakpoint: 1280,
+              settings: {
+                slidesToShow: 4
+              }
+            },
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                vertical: false,
+                slidesToShow: 5
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                vertical: false,
+                slidesToShow: 3
+              }
+            }
+          ]
+        });
+        $('.sticky-content li a').on('click', function(e){
+          e.preventDefault();
+          var link = $(this);
+          var id = link.attr('href');
+          if($(id).length) {
+            $("html, body").animate({ scrollTop: $(id).offset().top-120 }, 400);
+          }
+          setTimeout(function(){
+            $('.sticky-content li a').removeClass('selected');
+            link.addClass('selected');
+          },500);
+        });
+        $('.productSticky .product-form--atc-button, .sticky-content h3').on('click', function(e){
+          e.preventDefault();
+          $("html, body").animate({ scrollTop: 0 }, "slow");
+        });
+
+      });
+      $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+        var startSticky = $('#product_detail').offset().top-200;
+        if (scroll >= startSticky) {
+          $("body").addClass("callSticky");
+        } else {
+          $("body").removeClass("callSticky");
+        }
+
+        var top_of_element = $("#product_detail").offset().top-120;
+        var bottom_of_element = $("#product_detail").offset().top + $("#product_detail").outerHeight() - 130;
+        var bottom_of_screen = $(window).scrollTop() + window.innerHeight;
+        var top_of_screen = $(window).scrollTop();
+
+        if((top_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+          $('a[href="#product_detail"]').addClass('selected');
+        }
+        else {
+          $('a[href="#product_detail"]').removeClass('selected');
+        }
+
+        var top_of_element2 = $("#q_and_a").offset().top-120;
+        var bottom_of_element2 = $("#q_and_a").offset().top + $("#q_and_a").outerHeight() - 130;
+
+        if((top_of_screen > top_of_element2) && (top_of_screen < bottom_of_element2)){
+          $('a[href="#q_and_a"]').addClass('selected');
+        }
+        else {
+          $('a[href="#q_and_a"]').removeClass('selected');
+        }
+
+        var top_of_element3 = $("#client_review").offset().top-120;
+        var bottom_of_element3 = $("#client_review").offset().top + $("#client_review").outerHeight() - 130;
+
+        if((top_of_screen > top_of_element3) && (top_of_screen < bottom_of_element3)){
+          $('a[href="#client_review"]').addClass('selected');
+        }
+        else {
+          $('a[href="#client_review"]').removeClass('selected');
+        }
+      });
+    </script>
+    {% endif %}
+    <script>
+      $(document).ready(function(){
+        $('body').on('click', '.adjust',function(){
+          var input = $(this).parent().find('input');
+          var ip = parseInt(input.val());
+          if($(this).hasClass('plus')) {
+            ip = ip + 1;
+          } else {
+            ip = ip - 1;
+          }
+          if(ip==0) {
+            return false;
+          }
+          input.val(ip);
+        });
+
+        if(typeof(TurnToItemData) == 'undefined' || typeof(TurnToItemData.counts) == 'undefined') {
+        } else {
+          if(TurnToItemData.counts.c > 0) {
+            $('#q_and_a').addClass('col64');
+            $('#chatter_data').addClass('col36');
+            $('.splitRows').addClass('columns');
+          }
+        }
+        $('body').on('click','#TT2questionText', function(){
+        	$('#TT4instAnswNext').val('SUBMIT NEW QUESTION');
+        });
+      });
+      $(window).on('load',function(){
+        setTimeout( function(){
+          $('.gridReviewTeaser').each(function(){
+            var starContainer = $(this);
+            var sku = starContainer.attr('data-sku');
+            var url = '//static.www.turnto.com/sitedata/bM99ARRH2BRlxZssite/v4_3/'+sku+'/d/itemjs';
+            $.getScript(url, function(){
+              if(typeof(TurnToItemData) == 'undefined' || typeof(TurnToItemData.counts) == 'undefined') {
+              } else {
+                var reviewCount = TurnToItemData.counts.r;
+                var teaserContainer = starContainer;
+                var teaserHtml = '';
+                var rating = Math.round((TurnToItemData.counts.ar + 0.25) * 100.0) / 100.0;
+                rating = rating.toString();
+                var decimal = parseInt(rating.substring(2, 3))
+                rating = rating.substring(0, 1) + "-" + (decimal >= 5 ? '5' : '0');
+                if(reviewCount == 0) {
+                  teaserHtml = '<div class="TT2left TTratingBox TTrating-0-0"></div> <span >No review yet</span>';
+                } else {
+                  teaserHtml = '<div class="TTratingBox TTrating-' + rating + '"></div> <span >' + reviewCount + ' Review' + (reviewCount == 1 ? '' : 's') + '</span>';
+                }
+                teaserContainer.html(teaserHtml);
+              }
+            });
+          });
+        },1000);
+      });
+    </script>
+    {% include 'structured-data' %}
+  <!--begin-bc-sf-filter-js-->
+  {% include 'bc-sf-filter' %}
+<!--end-bc-sf-filter-js-->
+{% include 'easyvideo' %}
+
+{% include 'swymSnippet' %}
+
+{% include 'preorder-now' %}
+  </body>
+</html>
